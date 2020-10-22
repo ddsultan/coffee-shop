@@ -18,31 +18,34 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="+"
-        android:layout_marginLeft="10dp"
-        android:onClick="onIncrementButtonClick"
-        android:layout_marginStart="10dp" />
-
-    <TextView
-        android:id="@+id/quantity_text_view"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="-"
-        android:layout_marginLeft="10dp"
-        android:onClick="onDecrementButtonClick"
-        android:layout_marginStart="10dp" />
+        android:orientation="horizontal">
 
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:layout_marginLeft="10dp"
+            android:onClick="onDecrementButtonClick"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/quantity_text_view"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            />
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:onClick="onIncrementButtonClick"/>
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
