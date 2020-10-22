@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         final String totalPrice = NumberFormat.getCurrencyInstance().format(5 * this.quantity);
         final String orderMessage = "Total: " + totalPrice + "\nThank you!";
 
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(5 * this.quantity));
+        if (this.quantity > 0) {
+            priceTextView.setText(orderMessage);
+        }
     }
 
     public void onIncrementButtonClick(View view) {
