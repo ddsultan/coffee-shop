@@ -3,6 +3,7 @@ package com.example.justjava;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -51,5 +52,6 @@ public class MainActivity extends AppCompatActivity {
     private void displayQuantity() {
         final TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + this.quantity);
+        Log.d(this.getLocalClassName(), "Quantity is: " + this.quantity);
     }
 }
