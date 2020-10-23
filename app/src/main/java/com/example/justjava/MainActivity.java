@@ -21,12 +21,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOrderButtonClick(View view) {
         final TextView priceTextView = findViewById(R.id.price_text_view);
-        final String totalPrice = NumberFormat.getCurrencyInstance().format(5 * this.quantity);
-        final String orderMessage = "Total: " + totalPrice + "\nThank you!";
+        final int price = calculatePrice();
+        final String formattedPrice = NumberFormat.getCurrencyInstance().format(price);
+        final String orderMessage = "Total: " + formattedPrice + "\nThank you!";
 
         if (this.quantity > 0) {
             priceTextView.setText(orderMessage);
         }
+    }
+
+    private int calculatePrice() {
+        return 5 * this.quantity;
     }
 
     public void onIncrementButtonClick(View view) {
