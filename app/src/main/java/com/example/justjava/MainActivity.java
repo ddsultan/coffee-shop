@@ -20,18 +20,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOrderButtonClick(View view) {
-        final TextView priceTextView = findViewById(R.id.price_text_view);
+        final TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         final String orderSummary = createOrderSummary();
 
         if (this.quantity > 0) {
-            priceTextView.setText(orderSummary);
+            orderSummaryTextView.setText(orderSummary);
         }
     }
 
     private String createOrderSummary() {
         final int price = calculatePrice();
         final String formattedPrice = NumberFormat.getCurrencyInstance().format(price);
-        return "Total: " + formattedPrice + "\nThank you!";
+        return "Name: DD\nQuantity: " + this.quantity +  "\nTotal: " + formattedPrice + "\nThank you!";
     }
 
     private int calculatePrice() {
