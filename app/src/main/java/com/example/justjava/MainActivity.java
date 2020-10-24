@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int quantity;
     private String withWhippedCream = "No";
+    private String withChocolate = "No";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
     public void onOrderButtonClick(View view) {
         final TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         final CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_checkbox);
+        final CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
         this.withWhippedCream = whippedCreamCheckBox.isChecked() ? "Yes" : "No";
+        this.withChocolate = chocolateCheckBox.isChecked() ? "Yes" : "No";
         final String orderSummary = createOrderSummary();
 
         if (this.quantity > 0) {
@@ -36,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary() {
         final int price = calculatePrice();
         final String formattedPrice = NumberFormat.getCurrencyInstance().format(price);
-        return "Name: DD\nWith Whipped Cream? - " + this.withWhippedCream + "\nQuantity: " + this.quantity +  "\nTotal: " + formattedPrice + "\nThank you!";
+        return "Name: DD\n" +
+                "With Whipped Cream? - " + this.withWhippedCream
+                + "\nWith Chocolate? - " + this.withChocolate
+                + "\nQuantity: " + this.quantity
+                + "\nTotal: " + formattedPrice
+                + "\nThank you!";
     }
 
     private int calculatePrice() {
