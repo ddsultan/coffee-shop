@@ -8,12 +8,13 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int quantity;
+    private int quantity = 1;
     private boolean withWhippedCream = false;
     private boolean withChocolate = false;
     private String customerName;
@@ -59,12 +60,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onIncrementButtonClick(View view) {
+        if (this.quantity == 100){
+            Toast.makeText(this, "You have reached the maximum limit", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         this.quantity++;
         displayQuantity();
+
     }
 
     public void onDecrementButtonClick(View view) {
-        if (this.quantity > 1) this.quantity--;
+        if (this.quantity == 1){
+            Toast.makeText(this, "You have reached the minimum limit", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        this.quantity--;
         displayQuantity();
     }
 
