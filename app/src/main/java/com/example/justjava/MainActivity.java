@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -12,6 +13,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     private int quantity;
+    private String withWhippedCream = "No";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOrderButtonClick(View view) {
         final TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+        final CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_checkbox);
+        this.withWhippedCream = whippedCreamCheckBox.isChecked() ? "Yes" : "No";
         final String orderSummary = createOrderSummary();
 
         if (this.quantity > 0) {
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary() {
         final int price = calculatePrice();
         final String formattedPrice = NumberFormat.getCurrencyInstance().format(price);
-        return "Name: DD\nQuantity: " + this.quantity +  "\nTotal: " + formattedPrice + "\nThank you!";
+        return "Name: DD\nWith Whipped Cream? - " + this.withWhippedCream + "\nQuantity: " + this.quantity +  "\nTotal: " + formattedPrice + "\nThank you!";
     }
 
     private int calculatePrice() {
