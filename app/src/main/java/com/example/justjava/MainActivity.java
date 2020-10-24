@@ -14,8 +14,8 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     private int quantity;
-    private String withWhippedCream = "No";
-    private String withChocolate = "No";
+    private boolean withWhippedCream = false;
+    private boolean withChocolate = false;
     private String customerName;
 
     @Override
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
         final EditText customerNameField = findViewById(R.id.customer_name);
         this.customerName = customerNameField.getText().toString();
-        this.withWhippedCream = whippedCreamCheckBox.isChecked() ? "Yes" : "No";
-        this.withChocolate = chocolateCheckBox.isChecked() ? "Yes" : "No";
+        this.withWhippedCream = whippedCreamCheckBox.isChecked();
+        this.withChocolate = chocolateCheckBox.isChecked();
         final String orderSummary = createOrderSummary();
 
         if (this.quantity > 0) {
@@ -44,15 +44,18 @@ public class MainActivity extends AppCompatActivity {
         final int price = calculatePrice();
         final String formattedPrice = NumberFormat.getCurrencyInstance().format(price);
         return "Name: " + this.customerName
-                + "\nWith Whipped Cream? - " + this.withWhippedCream
-                + "\nWith Chocolate? - " + this.withChocolate
+                + "\nWith Whipped Cream? - " + (this.withWhippedCream ? "Yes" : "No")
+                + "\nWith Chocolate? - " + (this.withChocolate ? "Yes" : "No")
                 + "\nQuantity: " + this.quantity
                 + "\nTotal: " + formattedPrice
                 + "\nThank you!";
     }
 
     private int calculatePrice() {
-        return 5 * this.quantity;
+        final int basePrice = 5 * this.quantity;
+        final int toppingsPrice = this.quantity * ((this.withChocolate ? 1 : 0) + (this.withWhippedCream ? 2 : 0));
+
+        return basePrice + toppingsPrice;
     }
 
     public void onIncrementButtonClick(View view) {
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onDecrementButtonClick(View view) {
-        if (this.quantity > 0) this.quantity--;
+        if (this.quantity > 1) this.quantity--;
         displayQuantity();
     }
 
