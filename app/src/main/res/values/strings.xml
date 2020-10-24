@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Coffee Shop</string>
     <string name="order_summary">Order Summary</string>
+    <string name="whipped">Whipped Cream</string>
+    <string name="chocolate">Choco</string>
+    <string name="quantity">Quantity</string>
 </resources>
