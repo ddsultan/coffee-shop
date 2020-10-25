@@ -55,8 +55,8 @@
             <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="onDecrementButtonClick"
                 android:text="-" />
 
@@ -79,6 +79,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:onClick="onOrderButtonClick"
-            android:text="@string/order" />
+            android:text="@string/order"/>
     </LinearLayout>
 </ScrollView>
