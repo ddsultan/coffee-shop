@@ -2,6 +2,8 @@ package com.example.justjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOrderButtonClick(View view) {
-        final TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         final CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_checkbox);
         final CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
         final EditText customerNameField = findViewById(R.id.customer_name);
@@ -36,8 +37,16 @@ public class MainActivity extends AppCompatActivity {
         this.withChocolate = chocolateCheckBox.isChecked();
         final String orderSummary = createOrderSummary();
 
-        if (this.quantity > 0) {
-            orderSummaryTextView.setText(orderSummary);
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+        final String [] addresses = { "test@hitmail.com" };
+
+        intent.setData(Uri.parse("mailto:")); // only open mail apps
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Order");
+        intent.putExtra(Intent.EXTRA_TEXT, orderSummary);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
         }
     }
 
@@ -67,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
         this.quantity++;
         displayQuantity();
-
     }
 
     public void onDecrementButtonClick(View view) {
