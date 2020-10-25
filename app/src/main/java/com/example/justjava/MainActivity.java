@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         final Intent intent = new Intent(Intent.ACTION_SEND);
         final String [] addresses = { "test@hitmail.com" };
 
-        intent.setData(Uri.parse("mailto:")); // only open mail apps
+        intent.setType("*/*");
+        //intent.setData(Uri.parse("mailto:")); // only open mail apps
+
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, "Order");
         intent.putExtra(Intent.EXTRA_TEXT, orderSummary);
