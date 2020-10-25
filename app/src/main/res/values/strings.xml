@@ -1,7 +1,19 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Coffee Shop</string>
     <string name="whipped">Whipped Cream</string>
     <string name="chocolate">Choco</string>
     <string name="quantity">Quantity</string>
     <string name="customer_name">Name</string>
+    <string name="order">Order</string>
+    <string name="max_limit_msg">You have reached the maximum limit</string>
+    <string name="min_limit_msg">You have reached the minimum limit</string>
+    <string name="toppings">Toppings</string>
+    <string name="order_summary_name">Name: <xliff:g id="name" example="Amy">%s</xliff:g></string>
+    <string name="order_summary_whipped_cream">With Whipped Cream? - <xliff:g id="name" example="Yes/No">%s</xliff:g></string>
+    <string name="order_summary_choco">With Chocolate? - <xliff:g id="choco" example="Yes/No">%s</xliff:g></string>
+    <string name="order_summary_quantity">With Chocolate? - <xliff:g id="quantity" example="1">%d</xliff:g></string>
+    <string name="order_summary_total">Total: <xliff:g id="total" example="6.0">%d</xliff:g></string>
+    <string name="thank_you">Thank you!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

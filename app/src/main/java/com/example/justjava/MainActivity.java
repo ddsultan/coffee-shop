@@ -3,7 +3,6 @@ package com.example.justjava;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private int quantity = 1;
     private boolean withWhippedCream = false;
     private boolean withChocolate = false;
-    private String customerName;
+    private String customerName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +54,16 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary() {
         final int price = calculatePrice();
         final String formattedPrice = NumberFormat.getCurrencyInstance().format(price);
-        return "Name: " + this.customerName
-                + "\nWith Whipped Cream? - " + (this.withWhippedCream ? "Yes" : "No")
-                + "\nWith Chocolate? - " + (this.withChocolate ? "Yes" : "No")
-                + "\nQuantity: " + this.quantity
-                + "\nTotal: " + formattedPrice
-                + "\nThank you!";
+        final String yesString = getString(R.string.yes);
+        final String noString = getString(R.string.no);
+        String orderSummary = getString(R.string.order_summary_name, this.customerName) + "\n";
+
+        orderSummary += getString(R.string.order_summary_whipped_cream) + (this.withWhippedCream ? yesString : noString);
+        orderSummary += getString(R.string.order_summary_choco) + (this.withChocolate ? yesString : noString);
+        orderSummary += getString(R.string.order_summary_quantity) + this.quantity;
+        orderSummary += getString(R.string.order_summary_total) + formattedPrice;
+        orderSummary += getString(R.string.thank_you);
+        return orderSummary;
     }
 
     private int calculatePrice() {
@@ -72,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onIncrementButtonClick(View view) {
         if (this.quantity == 100){
-            Toast.makeText(this, "You have reached the maximum limit", Toast.LENGTH_SHORT).show();
+            final String maxLimitMessage = getString(R.string.max_limit_msg);
+            Toast.makeText(this, maxLimitMessage, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -81,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onDecrementButtonClick(View view) {
-        if (this.quantity == 1){
-            Toast.makeText(this, "You have reached the minimum limit", Toast.LENGTH_SHORT).show();
+        if (this.quantity == 1) {
+            final String minLimitMessage = getString(R.string.max_limit_msg);
+            Toast.makeText(this, minLimitMessage, Toast.LENGTH_SHORT).show();
             return;
         }
 
