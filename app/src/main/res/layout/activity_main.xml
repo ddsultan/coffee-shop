@@ -20,9 +20,8 @@
             android:inputType="textCapWords"/>
 
         <TextView
-            style="@style/CustomLabel"
-            android:text="@string/toppings"
-            android:textAllCaps="true" />
+            style="@style/HeaderTextStyle"
+            android:text="@string/toppings"/>
 
         <CheckBox
             android:id="@+id/whipped_checkbox"
@@ -43,9 +42,8 @@
             android:textSize="16sp" />
 
         <TextView
-            style="@style/CustomLabel"
-            android:text="@string/quantity"
-            android:textAllCaps="true"/>
+            style="@style/HeaderTextStyle"
+            android:text="@string/quantity"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -62,7 +60,9 @@
 
             <TextView
                 android:id="@+id/quantity_text_view"
-                style="@style/CustomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
