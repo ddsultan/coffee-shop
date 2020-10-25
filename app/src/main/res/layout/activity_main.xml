@@ -45,11 +45,7 @@
         <TextView
             style="@style/CustomLabel"
             android:text="@string/quantity"
-            android:textAllCaps="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textAllCaps="true"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
